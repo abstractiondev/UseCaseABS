@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 sp1 (http://www.altova.com) by Kalle Launiala (Citrus Solutions Oy) -->
+<xs:schema xmlns="http://tempuri.org/UseCase_v1_0.xsd" xmlns:mstns="http://tempuri.org/UseCase_v1_0.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/UseCase_v1_0.xsd" elementFormDefault="qualified" id="UseCase_v1_0">
+	<xs:element name="UseCaseAbstraction">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="UseCases">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UseCase">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Actors" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ActorRef" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="actorName" type="xs:string" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="MainFlow">
+											<xs:complexType>
+												<xs:sequence/>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="AlternateFlows" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AlternateFlow" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:attribute name="name"/>
+															<xs:attribute name="branchingPoint"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ExceptionFlows" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ExceptionFlow">
+														<xs:complexType>
+															<xs:attribute name="name"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="name"/>
+									<xs:attribute name="description"/>
+								</xs:complexType>
+								<xs:unique name="ActorUK">
+									<xs:selector xpath="Actors/ActorRef"/>
+									<xs:field xpath="@actorName"/>
+								</xs:unique>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="scope"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Actors">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Actor">
+								<xs:complexType>
+									<xs:attribute name="name"/>
+									<xs:attribute name="description"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
